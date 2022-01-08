@@ -1,0 +1,31 @@
+@import 'colors';
+
+$baseline-2: 2px;
+$baseline-4: 4px;
+$baseline-8: 8px;
+$baseline-12: 12px;
+$baseline-16: 16px;
+$baseline-24: 24px;
+$baseline-32: 32px;
+$baseline-40: 40px;
+$baseline-48: 48px;
+$baseline-64: 64px;
+
+$spacing-3xs: $baseline-2;
+$spacing-2xs: $baseline-4;
+$spacing-xs: $baseline-8;
+$spacing-sm: $baseline-12;
+$spacing-md: $baseline-16;
+$spacing-lg: $baseline-24;
+$spacing-xl: $baseline-32;
+$spacing-2xl: $baseline-40;
+$spacing-3xl: $baseline-48;
+$spacing-4xl: $baseline-64;
+
+$text-01: $color-gray-100;
+$text-02: $color-gray-70;
+
+$base-font-size: 12px;
+$header-font-size: 12px;
+$base-font-weight: 300;
+$header-font-weight: 400;
