@@ -1,0 +1,45 @@
+@import '../../styles/index.scss';
+
+.table {
+  &__container {
+    overflow-x: auto;
+    padding: $baseline-12;
+
+    @media screen and (max-width: 768px) {
+      padding: $baseline-8;
+    }
+  }
+  table {
+    width: 100%;
+    border-radius: $baseline-8;
+    border-collapse: collapse;
+  }
+
+  th,
+  td {
+    text-align: left;
+    padding: $baseline-16;
+    font-size: $baseline-12;
+    border-bottom: 1px solid $color-gray-20;
+  }
+
+  tr:hover {
+    background-color: $color-accent-20;
+    cursor: pointer;
+  }
+
+  th {
+    padding: $baseline-24 $baseline-16;
+  }
+
+  thead {
+    background-color: $color-gray-10;
+    border-radius: 4px;
+    font-weight: $header-font-weight;
+
+    tr:hover {
+      background-color: $color-gray-10;
+      cursor: auto;
+    }
+  }
+}
