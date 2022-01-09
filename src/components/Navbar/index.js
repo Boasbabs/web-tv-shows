@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import { FiAlignJustify, FiX } from 'react-icons/fi';
+import { Image } from 'components';
 import './Navbar.scss';
 
 const Navbar = () => {
@@ -41,11 +42,7 @@ const Navbar = () => {
           </li>
         </ul>
         <div className="navbar__profile">
-          <img
-            src="https://www.w3schools.com/css/paris.jpg"
-            alt="Avatar"
-            class="navbar__profile__avatar"
-          />
+          <Image />
           <p className="">Adeyemi Babalola</p>
         </div>
         {isOpen ? (

@@ -1,0 +1,18 @@
+@import '../../styles/index.scss';
+
+.image {
+  vertical-align: middle;
+  display: inline-block;
+  width: $baseline-32;
+  height: $baseline-32;
+  border-radius: $baseline-8;
+  margin-left: $baseline-8;
+  margin-right: $baseline-8;
+
+  &.large {
+    width: $baseline-48;
+    height: $baseline-48;
+    margin-left: $baseline-12;
+    margin-right: $baseline-12;
+  }
+}

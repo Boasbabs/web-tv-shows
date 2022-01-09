@@ -113,15 +113,5 @@
     @media screen and (max-width: 768px) {
       display: none;
     }
-
-    &__avatar {
-      vertical-align: middle;
-      display: inline-block;
-      width: $baseline-32;
-      height: $baseline-32;
-      border-radius: $baseline-8;
-      margin-left: $spacing-xs;
-      margin-right: $spacing-xs;
-    }
   }
 }
