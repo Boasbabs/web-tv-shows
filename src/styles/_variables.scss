@@ -25,7 +25,7 @@ $spacing-4xl: $baseline-64;
 $text-01: $color-gray-100;
 $text-02: $color-gray-70;
 
-$base-font-size: 12px;
-$header-font-size: 12px;
+$base-font-size: $baseline-12;
+$header-font-size: $baseline-40;
 $base-font-weight: 300;
 $header-font-weight: 400;
