@@ -51,42 +51,6 @@
       margin-bottom: $baseline-4;
     }
 
-    &_button {
-      border: none;
-      border-radius: $baseline-4;
-      padding: $baseline-8 $baseline-16;
-      cursor: pointer;
-      color: $color-white;
-      font-size: $baseline-12;
-      transition: all 300ms;
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-
-      svg {
-        margin-right: $baseline-8;
-        font-size: $baseline-16;
-
-        * {
-          color: $color-white;
-        }
-      }
-
-      &.default {
-        background-color: $color-primary;
-
-        &:hover,
-        &:focus {
-          background-color: $color-primary-lighter;
-        }
-
-        &:focus {
-          outline: 2px solid $color-primary;
-          border-radius: $baseline-4;
-        }
-      }
-    }
-
     &_form {
       padding: $baseline-24;
       border-radius: $baseline-8;
@@ -103,9 +67,7 @@
   display: flex;
   align-items: center;
   background-color: $color-white;
-
   width: fit-content;
-
   position: relative;
 
   @media screen and (max-width: 768px) {

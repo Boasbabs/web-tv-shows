@@ -1,10 +1,40 @@
-import { Navbar, Table } from 'components';
+import { useEffect, useState } from 'react';
+import toast, { Toaster } from 'react-hot-toast';
+
+import { Navbar, Table, Button, Image } from 'components';
 import { FiPlusCircle, FiSearch } from 'react-icons/fi';
+import { FETCH_SHOWS_URL } from './constants';
 
 import './styles/index.scss';
 import './App.scss';
 
 function App() {
+  const [lists, setLists] = useState([]);
+  const [isLoading, setIsLoading] = useState(false);
+
+  const fetchShows = async () => {
+    setIsLoading(true);
+
+    try {
+      const response = await fetch(FETCH_SHOWS_URL);
+      const data = await response.json();
+      setLists(data);
+
+      setIsLoading(false);
+    } catch (error) {
+      toast.error(
+        error?.response?.data?.message ||
+          error?.message ||
+          'Something went wrong!'
+      );
+      setIsLoading(false);
+    }
+  };
+
+  useEffect(() => {
+    fetchShows();
+  }, []);
+
   return (
     <div className="page">
       <Navbar />
@@ -17,14 +47,11 @@ function App() {
               <p className="page__header_subtitle">Counter 56</p>
             </div>
 
-            <button className="page__header_button default">
-              <FiPlusCircle />
-              Select Category
-            </button>
+            <Button icon={<FiPlusCircle />}>Select Category</Button>
           </div>
 
           <div className="page__header_form">
-            <div class="input-container fluid ">
+            <div className="input-container fluid ">
               <FiSearch />
               <input
                 type="text"
@@ -36,10 +63,33 @@ function App() {
         </section>
 
         {/* Table section */}
-        <section className="table">
-          <Table />
-        </section>
+
+        {isLoading ? (
+          <p className="info-text">Loading ...</p>
+        ) : (
+          <section className="table">
+            <Table data={lists} />
+          </section>
+        )}
       </main>
+      <Toaster
+        position="top-right"
+        toastOptions={{
+          duration: 3500,
+          style: {
+            borderRadius: '8px',
+            padding: '16px',
+            fontSize: '12px',
+            color: '#171717',
+            fontFamily: 'Be Vietnam Pro',
+          },
+          success: {
+            style: {
+              backgroundColor: '#eaf5f2',
+            },
+          },
+        }}
+      />
     </div>
   );
 }
