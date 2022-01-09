@@ -12,6 +12,9 @@
   align-items: center;
   justify-content: center;
   margin-left: $baseline-4;
+  margin-bottom: $baseline-4;
+  white-space: nowrap;
+  vertical-align: middle;
 
   svg {
     margin-right: $baseline-8;

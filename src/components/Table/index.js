@@ -37,7 +37,7 @@ const Table = ({ data }) => {
 
   return (
     <div className="table__container">
-      <table className="rounded">
+      <table width="100%">
         <thead>
           <tr>
             <th>Shows </th>

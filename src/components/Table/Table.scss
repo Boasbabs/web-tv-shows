@@ -11,8 +11,7 @@
   }
   table {
     width: 100%;
-    border-radius: $baseline-8;
-    border-collapse: collapse;
+    max-width: 100%;
     vertical-align: middle;
     text-align: center;
   }
@@ -22,6 +21,12 @@
     padding: $baseline-16;
     font-size: $baseline-12;
     border-bottom: 1px solid $color-gray-20;
+    vertical-align: middle;
+    white-space: nowrap;
+
+    &:first-child {
+      padding-left: 0;
+    }
   }
 
   tr:hover {
@@ -33,12 +38,19 @@
     text-align: left;
     font-size: $baseline-12;
     padding: $baseline-24 $baseline-16;
+    vertical-align: bottom;
 
     &:first-child {
-      width: 60%;
+      width: 50%;
     }
     &:last-child {
       width: 30%;
+    }
+
+    @media screen and (max-width: 768px) {
+      &:first-child {
+        width: 40%;
+      }
     }
   }
 
