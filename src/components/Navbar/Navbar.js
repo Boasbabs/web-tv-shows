@@ -1,5 +1,4 @@
 import { useState } from 'react';
-import { isMobile } from 'react-device-detect';
 import { FiAlignJustify, FiX } from 'react-icons/fi';
 import './Navbar.scss';
 
@@ -12,27 +11,30 @@ const Navbar = () => {
 
   return (
     <header>
-      <nav className="navbar">
+      <nav className="navbar" role="menubar" aria-label="Main Navigation">
         <div className="navbar__brand">
           <h5>My TVShows</h5>
         </div>
-        <ul className={`navbar__menu ${isOpen ? ' open' : ''}`}>
-          <li className="navbar__item">
+        <ul
+          className={`navbar__menu ${isOpen ? ' open' : ''}`}
+          aria-expanded={isOpen && true}
+        >
+          <li className="navbar__item" role="menuitem">
             <a className="navbar__item_link" href="#">
               Shows
             </a>
           </li>
-          <li className="navbar__item">
+          <li className="navbar__item" role="menuitem">
             <a className="navbar__item_link" href="#">
               Episodes
             </a>
           </li>
-          <li className="navbar__item">
+          <li className="navbar__item" role="menuitem">
             <a className="navbar__item_link" href="#">
               People
             </a>
           </li>
-          <li className="navbar__item">
+          <li className="navbar__item" role="menuitem">
             <a className="navbar__item_link" href="#">
               Settings
             </a>
