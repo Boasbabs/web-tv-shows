@@ -13,9 +13,10 @@
     width: 100%;
     border-radius: $baseline-8;
     border-collapse: collapse;
+    vertical-align: middle;
+    text-align: center;
   }
 
-  th,
   td {
     text-align: left;
     padding: $baseline-16;
@@ -29,16 +30,39 @@
   }
 
   th {
+    text-align: left;
+    font-size: $baseline-12;
     padding: $baseline-24 $baseline-16;
+
+    &:first-child {
+      width: 60%;
+    }
+    &:last-child {
+      width: 30%;
+    }
   }
 
   thead {
     background-color: $color-gray-10;
-    border-radius: 4px;
     font-weight: $header-font-weight;
 
     tr:hover {
       background-color: $color-gray-10;
+      cursor: auto;
+    }
+  }
+
+  tfoot {
+    background-color: $color-accent-20;
+    font-size: $baseline-8;
+
+    td {
+      text-align: right;
+      border: none;
+    }
+
+    tr:hover {
+      background-color: $color-accent-20;
       cursor: auto;
     }
   }
