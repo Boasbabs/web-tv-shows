@@ -10,3 +10,15 @@
   font-weight: $base-font-weight;
   color: $text-01;
 }
+
+a.link {
+  color: $color-secondary;
+  text-decoration: underline $color-primary double;
+  text-underline-offset: 4px;
+  transition: color 1s;
+
+  &:hover {
+    color: $color-secondary-darker;
+    text-decoration: none;
+  }
+}

@@ -1,14 +1,18 @@
+import { useState } from 'react';
 import usePaginator from 'react-use-paginator';
 import { FiArrowLeft, FiArrowRight } from 'react-icons/fi';
 
-import { Button, Image } from 'components';
+import { Button, Image, Flyout } from 'components';
 import './Table.scss';
 
-const Page = ({ items, index }) => {
+const Page = ({ items, handleDetails }) => {
+  const handleClick = (e, item) => {
+    handleDetails(item);
+  };
   return (
     <>
       {items.map((item) => (
-        <tr key={item.id}>
+        <tr key={item.id} onClick={(e) => handleClick(e, item)}>
           <td>
             <Image type={'large'} src={item.image?.medium} alt={item.name} />
             {item.name}
@@ -28,6 +32,14 @@ const Page = ({ items, index }) => {
 };
 
 const Table = ({ data }) => {
+  const [details, setDetails] = useState([]);
+  const [toggle, setToggle] = useState(false);
+
+  const handleDetails = (item) => {
+    setToggle(!toggle);
+    setDetails(item);
+  };
+
   const { Component, nextPage, prevPage, totalPages, currentPage } =
     usePaginator({
       PageComponent: Page,
@@ -46,7 +58,7 @@ const Table = ({ data }) => {
           </tr>
         </thead>
         <tbody>
-          <Component />
+          <Component handleDetails={handleDetails} />
         </tbody>
         <tfoot>
           <tr>
@@ -66,6 +78,7 @@ const Table = ({ data }) => {
           </tr>
         </tfoot>
       </table>
+      <Flyout slideShow={toggle} setSlideShow={setToggle} details={details} />
     </div>
   );
 };

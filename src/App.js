@@ -1,16 +1,28 @@
 import { useEffect, useState } from 'react';
 import toast, { Toaster } from 'react-hot-toast';
-
-import { Navbar, Table, Button, Image } from 'components';
 import { FiPlusCircle, FiSearch } from 'react-icons/fi';
+
+import { Navbar, Table, Button } from 'components';
 import { FETCH_SHOWS_URL } from './constants';
 
 import './styles/index.scss';
 import './App.scss';
 
+/**
+ * 
+ ## TODO
+- Edit README.md
+- Add detail drawer on the table rows showing the details
+- Add validation to search, throttle the search feature
+- write test for tables
+- filter table by genre of shows
+ */
+
 function App() {
   const [lists, setLists] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
+  const [slideShow, setSlideShow] = useState(false);
+  const [details, setDetails] = useState([]);
 
   const fetchShows = async () => {
     setIsLoading(true);
@@ -38,6 +50,7 @@ function App() {
   return (
     <div className="page">
       <Navbar />
+
       <main className="page__container">
         {/* Header section */}
         <section className="page__header">
@@ -72,6 +85,7 @@ function App() {
           </section>
         )}
       </main>
+      {/* Notification Toaster and its configurations */}
       <Toaster
         position="top-right"
         toastOptions={{
