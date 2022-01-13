@@ -1,0 +1,56 @@
+@import '../../styles/index.scss';
+
+.header {
+  background-color: $color-accent-20 !important;
+  color: $color-primary;
+  padding: $baseline-24;
+  font-weight: 400;
+  height: $baseline-64;
+}
+
+.sliderBody {
+  flex-direction: column;
+  font-size: $baseline-12;
+  color: $color-gray-70;
+  font-weight: 200;
+  line-height: 1.5;
+  padding: $baseline-24;
+
+  h2 {
+    font-size: $baseline-24;
+    margin-bottom: $baseline-12;
+    color: $color-primary;
+  }
+
+  img {
+    margin-bottom: $baseline-12;
+    border-radius: $baseline-8;
+  }
+
+  h5 {
+    color: $color-gray-90;
+    font-size: $baseline-16;
+    margin-bottom: $baseline-8;
+    margin-top: $baseline-8;
+  }
+
+  p {
+    color: $color-gray-70;
+    margin-bottom: $baseline-12;
+  }
+
+  dl {
+    position: relative;
+    dt {
+      text-transform: uppercase;
+      color: $color-gray-70;
+      margin-top: $baseline-8;
+    }
+
+    dd {
+      display: inline-block;
+      font-weight: 400;
+      margin-inline-start: 0px;
+    }
+  }
+}
