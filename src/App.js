@@ -9,16 +9,6 @@ import { FETCH_SHOWS_URL } from './constants';
 import './styles/index.scss';
 import './App.scss';
 
-/**
- * 
- ## TODO
-- Edit README.md
-- Add detail drawer on the table rows showing the details
-- Add validation to search, throttle the search feature
-- write test for tables
-- filter table by genre of shows
- */
-
 function App() {
   const [apiData, setApiData] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
@@ -66,7 +56,6 @@ function App() {
 
   useEffect(() => {
     debouncedSearch();
-
     return () => {
       debouncedSearch.cancel();
     };
@@ -88,8 +77,6 @@ function App() {
               <h2 className="page__header_title">TV Maze Shows</h2>
               <p className="page__header_subtitle">Total: {apiData.length}</p>
             </div>
-
-            {/* <Button icon={<FiPlusCircle />}>Select Category</Button> */}
           </div>
 
           <div className="page__header_form">
@@ -107,7 +94,6 @@ function App() {
         </section>
 
         {/* Table section */}
-
         {isLoading ? (
           <p className="info-text">Loading ...</p>
         ) : (
@@ -127,11 +113,6 @@ function App() {
             fontSize: '12px',
             color: '#171717',
             fontFamily: 'Be Vietnam Pro',
-          },
-          success: {
-            style: {
-              backgroundColor: '#eaf5f2',
-            },
           },
         }}
       />
