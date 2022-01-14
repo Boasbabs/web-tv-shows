@@ -1,8 +1,8 @@
 import { useEffect, useState } from 'react';
 import toast, { Toaster } from 'react-hot-toast';
-import { FiPlusCircle, FiSearch } from 'react-icons/fi';
+import { FiSearch } from 'react-icons/fi';
 
-import { Navbar, Table, Button } from 'components';
+import { Navbar, Table } from 'components';
 import { FETCH_SHOWS_URL } from './constants';
 
 import './styles/index.scss';
@@ -19,10 +19,15 @@ import './App.scss';
  */
 
 function App() {
-  const [lists, setLists] = useState([]);
+  const [apiData, setApiData] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
-  const [slideShow, setSlideShow] = useState(false);
-  const [details, setDetails] = useState([]);
+
+  const [searchTerm, setSearchTerm] = useState('');
+  const [searchResults, setSearchResults] = useState([]);
+
+  const handleChange = (e) => {
+    setSearchTerm(e.target.value);
+  };
 
   const fetchShows = async () => {
     setIsLoading(true);
@@ -30,18 +35,26 @@ function App() {
     try {
       const response = await fetch(FETCH_SHOWS_URL);
       const data = await response.json();
-      setLists(data);
-
+      setApiData(data);
+      setSearchResults(data);
       setIsLoading(false);
     } catch (error) {
       toast.error(
-        error?.response?.data?.message ||
-          error?.message ||
+        error.response?.data?.message ||
+          error.message ||
           'Something went wrong!'
       );
       setIsLoading(false);
     }
   };
+
+  useEffect(() => {
+    const regex = new RegExp(searchTerm, 'ig');
+    const searchResults = apiData.filter((item) => {
+      if (item.name.match(regex)) return item;
+    });
+    setSearchResults(searchResults);
+  }, [searchTerm]);
 
   useEffect(() => {
     fetchShows();
@@ -56,20 +69,22 @@ function App() {
         <section className="page__header">
           <div className="page__header_wrapper">
             <div>
-              <h2 className="page__header_title">Category</h2>
-              <p className="page__header_subtitle">Counter 56</p>
+              <h2 className="page__header_title">Shows</h2>
+              <p className="page__header_subtitle">Total: {apiData.length}</p>
             </div>
 
-            <Button icon={<FiPlusCircle />}>Select Category</Button>
+            {/* <Button icon={<FiPlusCircle />}>Select Category</Button> */}
           </div>
 
           <div className="page__header_form">
             <div className="input-container fluid ">
               <FiSearch />
               <input
+                onChange={handleChange}
+                value={searchTerm}
                 type="text"
                 className="input-field"
-                placeholder="Search for shows, episodes"
+                placeholder="Search for shows..."
               />
             </div>
           </div>
@@ -81,7 +96,7 @@ function App() {
           <p className="info-text">Loading ...</p>
         ) : (
           <section className="table">
-            <Table data={lists} />
+            <Table data={searchResults} />
           </section>
         )}
       </main>
