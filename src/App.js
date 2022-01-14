@@ -1,6 +1,7 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useState, useCallback } from 'react';
 import toast, { Toaster } from 'react-hot-toast';
 import { FiSearch } from 'react-icons/fi';
+import debounce from 'just-debounce-it';
 
 import { Navbar, Table } from 'components';
 import { FETCH_SHOWS_URL } from './constants';
@@ -29,7 +30,7 @@ function App() {
     setSearchTerm(e.target.value);
   };
 
-  const fetchShows = async () => {
+  const fetchData = async () => {
     setIsLoading(true);
 
     try {
@@ -48,16 +49,31 @@ function App() {
     }
   };
 
-  useEffect(() => {
-    const regex = new RegExp(searchTerm, 'ig');
+  const searchFunction = (val) => {
+    const regex = new RegExp(val, 'ig');
     const searchResults = apiData.filter((item) => {
       if (item.name.match(regex)) return item;
     });
     setSearchResults(searchResults);
-  }, [searchTerm]);
+  };
+
+  const debouncedSearch = useCallback(
+    debounce(() => {
+      searchFunction(searchTerm);
+    }, 500), // perform search for 500 ms
+    [apiData, searchTerm]
+  );
 
   useEffect(() => {
-    fetchShows();
+    debouncedSearch();
+
+    return () => {
+      debouncedSearch.cancel();
+    };
+  }, [debouncedSearch]);
+
+  useEffect(() => {
+    fetchData();
   }, []);
 
   return (
