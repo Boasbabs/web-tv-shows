@@ -27,11 +27,21 @@
     &:first-child {
       padding-left: 0;
     }
+
+    &.empty-state {
+      padding: $baseline-24;
+      font-size: $baseline-16;
+    }
   }
 
   tr:hover {
     background-color: $color-accent-20;
     cursor: pointer;
+
+    .empty-state {
+      cursor: not-allowed;
+      background-color: $color-white;
+    }
   }
 
   th {

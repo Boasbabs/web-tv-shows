@@ -9,6 +9,18 @@ const Page = ({ items, handleDetails }) => {
   const handleClick = (e, item) => {
     handleDetails(item);
   };
+
+  if (items.length === 0) {
+    return (
+      <>
+        <tr>
+          <td className="empty-state" colSpan={3}>
+            No data found...
+          </td>
+        </tr>
+      </>
+    );
+  }
   return (
     <>
       {items.map((item) => (
