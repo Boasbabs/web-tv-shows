@@ -26,20 +26,23 @@ const Flyout = ({ slideShow, setSlideShow, details }) => {
         className="slider-style"
       >
         <div className="slider-container">
-          <div className="sliderHeader header">{details.name}</div>
+          <div className="sliderHeader header" data-testid="flyout-title">
+            {details.name}
+          </div>
           <div className="sliderBody">
             <header>
               <img src={details?.image?.medium} alt={details.name} />
-              <h2>{details.name}</h2>
+              <h2 data-testid="flyout-header">{details.name}</h2>
             </header>
             <section>
-              <h5>Summary</h5>
+              <h5 data-testid="flyout-summary">Summary</h5>
               <div
+                data-testid="flyout-summary-desc"
                 className="summary"
                 dangerouslySetInnerHTML={summaryMarkup()}
               />
               <h5>Genres</h5>
-              <div>
+              <div data-testid="flyout-genres">
                 {details.genres?.map((gen) => (
                   <Button key={gen} type="outline">
                     {gen}
@@ -78,7 +81,12 @@ const Flyout = ({ slideShow, setSlideShow, details }) => {
             </section>
           </div>
           <div className="sliderFooter">
-            <Button onClick={() => setSlideShow(false)}>Cancel</Button>
+            <Button
+              data-testid="cancel-button"
+              onClick={() => setSlideShow(false)}
+            >
+              Cancel
+            </Button>
           </div>
         </div>
       </Slider>

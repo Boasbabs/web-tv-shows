@@ -25,12 +25,12 @@ const Page = ({ items, handleDetails }) => {
     <>
       {items.map((item) => (
         <tr key={item.id} onClick={(e) => handleClick(e, item)}>
-          <td>
+          <td data-testid="name">
             <Image type={'large'} src={item.image?.medium} alt={item.name} />
             {item.name}
           </td>
-          <td>{item.rating?.average}</td>
-          <td>
+          <td data-testid="rating">{item.rating?.average}</td>
+          <td data-testid="genres">
             {item.genres.map((gen) => (
               <Button key={gen} type="outline">
                 {gen}
