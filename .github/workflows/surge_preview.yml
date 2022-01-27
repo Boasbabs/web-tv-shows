@@ -1,9 +1,6 @@
 name: 🔂 Surge PR Preview
 
-on:
-  pull_request:
-    types: [opened, synchronize, reopened, closed]
-  push:
+on: [pull_request]
 
 jobs:
   preview:
@@ -16,10 +13,8 @@ jobs:
           surge_token: ${{ secrets.SURGE_TOKEN }}
           github_token: ${{ secrets.REPO_TOKEN }}
           dist: public
-          teardown: 'true'
           build: |
             npm install
             npm run build
-            mv build/index.html build/200.html 
       - name: Get the preview_url
         run: echo "url => ${{ steps.preview_step.outputs.preview_url }}"
