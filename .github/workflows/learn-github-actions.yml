@@ -1,0 +1,12 @@
+name: Learn Github Actions
+on:
+  push:
+    branches:
+      - "main"
+jobs:
+  hello_world_job:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Say hello_world_job
+        run: | 
+          echo "Hello world"
