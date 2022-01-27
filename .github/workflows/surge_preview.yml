@@ -1,6 +1,9 @@
 name: 🔂 Surge PR Preview
 
-on: [pull_request]
+on:
+  pull_request:
+    types: [opened, synchronize, reopened, closed]
+  push:
 
 jobs:
   preview:
@@ -12,6 +15,7 @@ jobs:
           surge_token: ${{ secrets.SURGE_TOKEN }}
           github_token: ${{ secrets.REPO_TOKEN }}
           dist: build
+          teardown: 'true'
           build: |
             npm install
             npm run build
