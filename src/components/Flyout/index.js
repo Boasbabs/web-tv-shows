@@ -73,6 +73,7 @@ const Flyout = ({ slideShow, setSlideShow, details }) => {
                     className="link"
                     href={details.officialSite}
                     target="_blank"
+                    rel="noreferrer"
                   >
                     {details.officialSite}
                   </a>
