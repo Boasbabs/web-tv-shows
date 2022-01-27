@@ -15,9 +15,8 @@ jobs:
           surge_token: ${{ secrets.SURGE_TOKEN }}
           github_token: ${{ secrets.REPO_TOKEN }}
           dist: build
-          teardown: 'true'
+          teardown: "true"
+          failOnError: "true"
           build: |
             npm install
             npm run build
-      - name: Get the preview_url
-        run: echo "url => ${{ steps.preview_step.outputs.preview_url }}"
