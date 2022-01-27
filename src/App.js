@@ -74,7 +74,7 @@ function App() {
         <section className="page__header">
           <div className="page__header_wrapper">
             <div>
-              <h2 className="page__header_title">TV Maze Shows</h2>
+              <h2 className="page__header_title">TV Maze Shows (Improved)</h2>
               <p className="page__header_subtitle">Total: {apiData.length}</p>
             </div>
           </div>
