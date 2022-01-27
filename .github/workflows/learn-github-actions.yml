@@ -10,3 +10,7 @@ jobs:
       - name: Say hello_world_job
         run: | 
           echo "Hello world"
+      - name: Display current date
+        run: date
+      - name: Directory content
+        run: ls -l
