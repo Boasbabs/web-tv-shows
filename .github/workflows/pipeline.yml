@@ -3,6 +3,9 @@ on:
   push:
     branches:
       - "main"
+  pull_request:
+    types: [opened, synchronize, reopened, closed]
+
 jobs:
   # lint and format
   deployment_pipeline:
