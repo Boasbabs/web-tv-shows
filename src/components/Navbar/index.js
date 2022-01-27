@@ -16,29 +16,26 @@ const Navbar = () => {
         <div className="navbar__brand">
           <h5>My TVShows</h5>
         </div>
-        <ul
-          className={`navbar__menu ${isOpen ? ' open' : ''}`}
-          aria-expanded={isOpen && true}
-        >
+        <ul className={`navbar__menu ${isOpen ? ' open' : ''}`}>
           <li className="navbar__item" role="menuitem">
-            <a className="navbar__item_link" href="#">
+            <button className="navbar__item_link" href="#">
               Shows
-            </a>
+            </button>
           </li>
           <li className="navbar__item" role="menuitem">
-            <a className="navbar__item_link" href="#">
+            <button className="navbar__item_link" href="#">
               Episodes
-            </a>
+            </button>
           </li>
           <li className="navbar__item" role="menuitem">
-            <a className="navbar__item_link" href="#">
+            <button className="navbar__item_link" href="#">
               People
-            </a>
+            </button>
           </li>
           <li className="navbar__item" role="menuitem">
-            <a className="navbar__item_link" href="#">
+            <button className="navbar__item_link" href="#">
               Settings
-            </a>
+            </button>
           </li>
         </ul>
         <div className="navbar__profile">

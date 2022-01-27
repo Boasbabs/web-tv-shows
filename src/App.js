@@ -38,19 +38,19 @@ function App() {
       setIsLoading(false);
     }
   };
+  function isTextMatch(item) {
+    const regex = new RegExp(searchTerm, 'ig');
+    return item.name.match(regex);
+  }
 
-  const searchFunction = (val) => {
-    const regex = new RegExp(val, 'ig');
-    const searchResults = apiData.filter((item) => {
-      if (item.name.match(regex)) return item;
-    });
+  const searchFunction = () => {
+    const searchResults = apiData.filter(isTextMatch);
     setSearchResults(searchResults);
   };
 
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   const debouncedSearch = useCallback(
-    debounce(() => {
-      searchFunction(searchTerm);
-    }, 500), // perform search for 500 ms
+    debounce(() => searchFunction(searchTerm), 500),
     [apiData, searchTerm]
   );
 
