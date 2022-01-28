@@ -67,5 +67,7 @@ jobs:
           node-version: "14.x"
       - name: Install surge
         run: npm install -g surge
+      - name: Install Packages
+        run: npm install
       - name: Build and deploy
         run: npm run surge
