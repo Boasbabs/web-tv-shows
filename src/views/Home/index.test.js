@@ -21,8 +21,6 @@ describe('Web TV App', () => {
     // this is only here to make the error output not appear in the project's output
     jest.spyOn(console, 'error').mockImplementation(() => {});
   });
-
-  // Reset any runtime request handlers we may add during the tests.
   afterEach(() => server.resetHandlers());
   afterAll(() => server.close()); // clean up once the tests are done
 
@@ -33,59 +31,50 @@ describe('Web TV App', () => {
   });
 
   test('render with all shows', async () => {
-    const { getAllByTestId } = render(<App />);
-
+    render(<Home />);
     await waitFor(() => {
-      const nameElements = getAllByTestId('name');
-      const ratingElements = getAllByTestId('rating');
-      const genresElements = getAllByTestId('genres');
-      expect(nameElements).toHaveLength(3);
-      expect(ratingElements).toHaveLength(3);
-      expect(genresElements).toHaveLength(3); // check if there are 3 shows in the table
+      expect(screen.getAllByTestId('name')).toHaveLength(3);
     });
+    expect(screen.getAllByTestId('rating')).toHaveLength(3);
+    expect(screen.getAllByTestId('genres')).toHaveLength(3);
   });
 
   test('view details of a shows upon clicked', async () => {
-    const { getAllByTestId, getByTestId } = render(<Home />);
+    render(<Home />);
     const firstShow = mocks.mockShowsData[0];
 
     let nameElements;
     await waitFor(() => {
-      nameElements = getAllByTestId('name');
+      nameElements = screen.getAllByTestId('name');
     });
     expect(nameElements).toHaveLength(3);
 
     // Get the first in the row
     const firstRow = nameElements[0];
-    // simulate a click event on the row
     userEvent.click(firstRow);
 
     // check if flyout is opened
     let flyoutTitle;
     await waitFor(() => {
-      flyoutTitle = getByTestId('flyout-title');
+      flyoutTitle = screen.getByTestId('flyout-title');
       expect(flyoutTitle).toBeInTheDocument();
-      expect(flyoutTitle.textContent).toBe(firstShow.name);
     });
+    expect(flyoutTitle.textContent).toBe(firstShow.name);
   });
 
   test('search for a show in the table', async () => {
-    const { findByPlaceholderText, getAllByTestId } = render(<Home />);
+    render(<Home />);
 
-    const searchInput = await findByPlaceholderText(/Search for shows/i);
+    const searchInput = await screen.findByPlaceholderText(/Search for shows/i);
     expect(searchInput).toBeInTheDocument();
 
     userEvent.type(searchInput, 'Under the Dome');
 
     await waitFor(() => {
-      const nameElements = getAllByTestId('name');
-      const ratingElements = getAllByTestId('rating');
-      const genresElements = getAllByTestId('genres');
-
       // only that role is shown after searching
-      expect(nameElements).toHaveLength(1);
-      expect(ratingElements).toHaveLength(1);
-      expect(genresElements).toHaveLength(1);
+      expect(screen.getAllByTestId('name')).toHaveLength(1);
     });
+    expect(screen.getAllByTestId('rating')).toHaveLength(1);
+    expect(screen.getAllByTestId('genres')).toHaveLength(1);
   });
 });

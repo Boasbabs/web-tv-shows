@@ -4,7 +4,6 @@ import { FiSearch } from 'react-icons/fi';
 import debounce from 'just-debounce-it';
 
 import { Navbar, Table } from 'components';
-import { FETCH_SHOWS_URL } from '../../constants';
 import { api, isTextMatch } from 'infrastructure';
 
 import './index.scss';
