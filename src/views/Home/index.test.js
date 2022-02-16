@@ -7,14 +7,12 @@ import Home from './index';
 import mocks from 'mocks';
 
 const server = setupServer(
-  //  "GET /shows" request
   rest.get('https://api.tvmaze.com/shows', (req, res, ctx) => {
     return res(ctx.json(mocks.mockShowsData));
   })
 );
 
 describe('Web TV App', () => {
-  // establish API mocking before all tests
   beforeAll(() => server.listen());
 
   beforeEach(() => {
