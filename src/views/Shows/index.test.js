@@ -3,7 +3,7 @@ import userEvent from '@testing-library/user-event';
 import { rest } from 'msw';
 import { setupServer } from 'msw/node';
 
-import Home from './index';
+import Shows from './index';
 import mocks from 'mocks';
 
 const server = setupServer(
@@ -23,13 +23,13 @@ describe('Web TV App', () => {
   afterAll(() => server.close()); // clean up once the tests are done
 
   test('renders app without crashing', () => {
-    render(<Home />);
+    render(<Shows />);
     const titleElement = screen.getByText(/TV Maze Shows/i);
     expect(titleElement).toBeInTheDocument();
   });
 
   test('render with all shows', async () => {
-    render(<Home />);
+    render(<Shows />);
     await waitFor(() => {
       expect(screen.getAllByTestId('name')).toHaveLength(3);
     });
@@ -38,7 +38,7 @@ describe('Web TV App', () => {
   });
 
   test('view details of a shows upon clicked', async () => {
-    render(<Home />);
+    render(<Shows />);
     const firstShow = mocks.mockShowsData[0];
 
     let nameElements;
@@ -61,7 +61,7 @@ describe('Web TV App', () => {
   });
 
   test('search for a show in the table', async () => {
-    render(<Home />);
+    render(<Shows />);
 
     const searchInput = await screen.findByPlaceholderText(/Search for shows/i);
     expect(searchInput).toBeInTheDocument();

@@ -3,10 +3,10 @@ import toast, { Toaster } from 'react-hot-toast';
 import debounce from 'just-debounce-it';
 import { api, isTextMatch } from 'infrastructure';
 
-import HomeUI from './Home';
+import ShowsUI from './Shows';
 const { getShows } = api;
 
-function Home() {
+function Shows() {
   const [apiData, setApiData] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
   const [searchTerm, setSearchTerm] = useState('');
@@ -60,7 +60,7 @@ function Home() {
 
   return (
     <>
-      <HomeUI
+      <ShowsUI
         searchTerm={searchTerm}
         apiData={apiData}
         isLoading={isLoading}
@@ -84,4 +84,4 @@ function Home() {
   );
 }
 
-export default Home;
+export default Shows;
