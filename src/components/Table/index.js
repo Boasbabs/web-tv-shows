@@ -47,7 +47,7 @@ const Table = ({ data }) => {
         </tbody>
         <tfoot>
           <tr>
-            <td colSpan={3}>
+            <td colSpan={'100%'}>
               <ReactPaginate
                 onPageChange={handlePageClick}
                 pageRangeDisplayed={2}
