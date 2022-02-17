@@ -1,0 +1,64 @@
+@import '../../styles/index.scss';
+
+.page {
+  background-color: $color-white;
+  height: 100%;
+
+  &__container {
+    display: flex;
+    flex-direction: column;
+    padding: $baseline-32;
+    width: 100%;
+
+    @media screen and (max-width: 768px) {
+      padding: $baseline-12;
+    }
+  }
+
+  &__header {
+    padding-top: $baseline-32;
+    padding-bottom: $baseline-32;
+
+    &_wrapper {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: $baseline-24;
+
+      @media screen and (max-width: 768px) {
+        margin-bottom: $baseline-32;
+        flex-direction: column;
+        justify-content: space-between;
+        align-items: center;
+        text-align: center;
+        min-height: 120px;
+      }
+    }
+
+    &_title {
+      font-weight: $header-font-weight;
+      font-size: $header-font-size;
+      margin-bottom: $baseline-16;
+
+      @media screen and (max-width: 768px) {
+        margin-bottom: $baseline-16;
+        font-size: $baseline-24;
+      }
+    }
+
+    &_subtitle {
+      font-size: $baseline-12;
+      margin-bottom: $baseline-4;
+    }
+
+    &_form {
+      padding: $baseline-24;
+      border-radius: $baseline-8;
+      background-color: $color-accent-10;
+
+      @media screen and (max-width: 768px) {
+        padding: $baseline-16;
+      }
+    }
+  }
+}
