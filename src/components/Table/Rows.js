@@ -1,3 +1,4 @@
+import { Link } from 'react-router-dom';
 import { Button, Image } from 'components';
 
 const Rows = ({ items, handleDetails }) => {
@@ -19,7 +20,7 @@ const Rows = ({ items, handleDetails }) => {
   return (
     <>
       {items.map((item) => (
-        <tr key={item.name} onClick={(e) => handleClick(e, item)}>
+        <tr key={item.name}>
           <td data-testid="name">
             <Image type={'large'} src={item.image?.medium} alt={item.name} />
             {item.name}
@@ -31,6 +32,19 @@ const Rows = ({ items, handleDetails }) => {
                 {gen}
               </Button>
             ))}
+          </td>
+          <td>
+            <Button type="outline" onClick={(e) => handleClick(e, item)}>
+              View Details
+            </Button>
+          </td>
+          <td>
+            <Link
+              style={{ display: 'block', margin: '1rem 0' }}
+              to={`/${item.id}`}
+              key={item.name}>
+              <Button type="default">Check Episodes</Button>
+            </Link>
           </td>
         </tr>
       ))}

@@ -1,5 +1,7 @@
 import { useState } from 'react';
 import { FiAlignJustify, FiX } from 'react-icons/fi';
+import { Link } from 'react-router-dom';
+
 import { Image } from 'components';
 import './Navbar.scss';
 
@@ -18,24 +20,14 @@ const Navbar = () => {
         </div>
         <ul className={`navbar__menu ${isOpen ? ' open' : ''}`}>
           <li className="navbar__item" role="menuitem">
-            <button className="navbar__item_link" href="#">
+            <Link className="navbar__item_link" to={`/`}>
               Shows
-            </button>
+            </Link>
           </li>
           <li className="navbar__item" role="menuitem">
-            <button className="navbar__item_link" href="#">
+            <Link className="navbar__item_link" to={`/`}>
               Episodes
-            </button>
-          </li>
-          <li className="navbar__item" role="menuitem">
-            <button className="navbar__item_link" href="#">
-              People
-            </button>
-          </li>
-          <li className="navbar__item" role="menuitem">
-            <button className="navbar__item_link" href="#">
-              Settings
-            </button>
+            </Link>
           </li>
         </ul>
         <div className="navbar__profile">

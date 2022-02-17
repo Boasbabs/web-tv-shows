@@ -39,6 +39,7 @@ const Table = ({ data }) => {
             <th>Shows </th>
             <th>Rating</th>
             <th>Genre</th>
+            <th colSpan={2}>Action</th>
           </tr>
         </thead>
         <tbody>

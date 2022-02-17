@@ -72,9 +72,6 @@
     &:first-child {
       width: 50%;
     }
-    &:last-child {
-      width: 30%;
-    }
 
     @media screen and (max-width: 768px) {
       &:first-child {
