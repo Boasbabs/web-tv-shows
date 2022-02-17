@@ -43,7 +43,6 @@ function HomeUI(props) {
           </section>
         )}
       </main>
-      {/* Notification Toaster and its configurations */}
     </div>
   );
 }

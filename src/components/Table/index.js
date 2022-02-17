@@ -1,63 +1,35 @@
-import { useState } from 'react';
-import usePaginator from 'react-use-paginator';
-import { FiArrowLeft, FiArrowRight } from 'react-icons/fi';
+import { useState, useEffect } from 'react';
+import ReactPaginate from 'react-paginate';
 
-import { Button, Image, Flyout } from 'components';
+import { Flyout } from 'components';
+import Rows from './Rows';
+
 import './Table.scss';
 
-const Page = ({ items, handleDetails }) => {
-  const handleClick = (e, item) => {
-    handleDetails(item);
-  };
-
-  if (items.length === 0) {
-    return (
-      <>
-        <tr>
-          <td className="empty-state" colSpan={3}>
-            No data found...
-          </td>
-        </tr>
-      </>
-    );
-  }
-  return (
-    <>
-      {items.map((item) => (
-        <tr key={item.id} onClick={(e) => handleClick(e, item)}>
-          <td data-testid="name">
-            <Image type={'large'} src={item.image?.medium} alt={item.name} />
-            {item.name}
-          </td>
-          <td data-testid="rating">{item.rating?.average}</td>
-          <td data-testid="genres">
-            {item.genres.map((gen) => (
-              <Button key={gen} type="outline">
-                {gen}
-              </Button>
-            ))}
-          </td>
-        </tr>
-      ))}
-    </>
-  );
-};
+const ITEMS_PER_PAGE = 10;
 
 const Table = ({ data }) => {
   const [details, setDetails] = useState([]);
   const [toggle, setToggle] = useState(false);
+  const [currentItems, setCurrentItems] = useState([]);
+  const [pageCount, setPageCount] = useState(0);
+  const [itemOffset, setItemOffset] = useState(0);
 
   const handleDetails = (item) => {
     setToggle(!toggle);
     setDetails(item);
   };
 
-  const { Component, nextPage, prevPage, totalPages, currentPage } =
-    usePaginator({
-      PageComponent: Page,
-      maxPerPage: 10,
-      data,
-    });
+  const handlePageClick = (event) => {
+    const newOffset = (event.selected * ITEMS_PER_PAGE) % data.length;
+    setItemOffset(newOffset);
+  };
+
+  useEffect(() => {
+    const endOffset = itemOffset + ITEMS_PER_PAGE;
+    setCurrentItems(data.slice(itemOffset, endOffset));
+    setPageCount(Math.ceil(data.length / ITEMS_PER_PAGE));
+  }, [itemOffset, data]);
 
   return (
     <div className="table__container">
@@ -70,22 +42,28 @@ const Table = ({ data }) => {
           </tr>
         </thead>
         <tbody>
-          <Component handleDetails={handleDetails} />
+          <Rows items={currentItems} handleDetails={handleDetails} />
         </tbody>
         <tfoot>
           <tr>
             <td colSpan={3}>
-              <span> Total Pages:{` ${currentPage} / ${totalPages}`} </span>
-              <Button
-                icon={<FiArrowLeft />}
-                type="outline"
-                onClick={prevPage}
-              ></Button>
-              <Button
-                icon={<FiArrowRight />}
-                type="outline"
-                onClick={nextPage}
-              ></Button>
+              <ReactPaginate
+                onPageChange={handlePageClick}
+                pageRangeDisplayed={2}
+                pageCount={pageCount}
+                renderOnZeroPageCount={null}
+                previousLabel="Previous"
+                nextLabel="Next"
+                pageClassName="page-item"
+                pageLinkClassName="page-link"
+                previousClassName="page-item"
+                previousLinkClassName="page-link"
+                nextClassName="page-item"
+                nextLinkClassName="page-link"
+                breakLabel="..."
+                breakClassName="page-item"
+                breakLinkClassName="page-link"
+              />
             </td>
           </tr>
         </tfoot>
