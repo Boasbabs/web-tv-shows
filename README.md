@@ -43,6 +43,7 @@ to generate the scaffolding for this app.
 - Make the app responsive
 - Notification for error or bad network request
 - Add UI tests; located `src/views/Shows/index.test.js`
+- Github Actions for feature branches
 
 ## Requirements
 
