@@ -1,5 +1,6 @@
 import { render, screen, waitFor } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
+import { MemoryRouter } from 'react-router-dom';
 import { rest } from 'msw';
 import { setupServer } from 'msw/node';
 
@@ -22,14 +23,16 @@ describe('Web TV App', () => {
   afterEach(() => server.resetHandlers());
   afterAll(() => server.close()); // clean up once the tests are done
 
-  test('renders app without crashing', () => {
-    render(<Shows />);
-    const titleElement = screen.getByText(/TV Maze Shows/i);
+  test('renders app without crashing', async () => {
+    render(<Shows />, { wrapper: MemoryRouter });
+    const titleElement = await screen.findByPlaceholderText(
+      /Search for shows/i
+    );
     expect(titleElement).toBeInTheDocument();
   });
 
   test('render with all shows', async () => {
-    render(<Shows />);
+    render(<Shows />, { wrapper: MemoryRouter });
     await waitFor(() => {
       expect(screen.getAllByTestId('name')).toHaveLength(3);
     });
@@ -38,12 +41,13 @@ describe('Web TV App', () => {
   });
 
   test('view details of a shows upon clicked', async () => {
-    render(<Shows />);
+    render(<Shows />, { wrapper: MemoryRouter });
     const firstShow = mocks.mockShowsData[0];
 
     let nameElements;
     await waitFor(() => {
-      nameElements = screen.getAllByTestId('name');
+      nameElements = screen.getAllByText(/View Details/i);
+      // await screen.findByText(/TV Maze Shows/i);
     });
     expect(nameElements).toHaveLength(3);
 
@@ -61,7 +65,7 @@ describe('Web TV App', () => {
   });
 
   test('search for a show in the table', async () => {
-    render(<Shows />);
+    render(<Shows />, { wrapper: MemoryRouter });
 
     const searchInput = await screen.findByPlaceholderText(/Search for shows/i);
     expect(searchInput).toBeInTheDocument();

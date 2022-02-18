@@ -31,16 +31,21 @@ I used the following technologies:
 I used [create-react-app](https://goo.gl/26jfy4)
 to generate the scaffolding for this app.
 
-## Requirements
+## Highlights
 
-- Ability to display a few popular TV shows based on their rating and genre 
-- When the user clicks on a TV show, the details of that TV show should be displayed on another screen.
-- User can search for a TV show to get the details
+- Routing implementation
+- Code organization/architecture 
+- Integration tests
 
 ## Bonuses!
 
 - Datatable is paginated
 - Make the app responsive
 - Notification for error or bad network request
-- Add UI tests; located `src/App.test.js`
+- Add UI tests; located `src/views/Shows/index.test.js`
 
+## Requirements
+
+- Ability to display a few popular TV shows based on their rating and genre 
+- When the user clicks on a TV show, the details of that TV show should be displayed on another screen.
+- User can search for a TV show to get the details
