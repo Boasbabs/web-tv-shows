@@ -32,6 +32,25 @@
       padding: $baseline-24;
       font-size: $baseline-16;
     }
+
+    .page-item {
+      background-color: $color-white;
+      display: inline-flex;
+      color: $color-gray-70;
+      border: 1px solid $color-gray-20;
+      border-radius: $baseline-4;
+      margin-left: $baseline-4;
+      margin-bottom: $baseline-4;
+
+      &:focus {
+        border: 1px solid $color-gray-70;
+      }
+    }
+
+    .page-link {
+      cursor: pointer;
+      padding: $baseline-8;
+    }
   }
 
   tr:hover {
@@ -52,9 +71,6 @@
 
     &:first-child {
       width: 50%;
-    }
-    &:last-child {
-      width: 30%;
     }
 
     @media screen and (max-width: 768px) {

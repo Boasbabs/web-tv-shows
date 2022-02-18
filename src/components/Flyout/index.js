@@ -23,8 +23,7 @@ const Flyout = ({ slideShow, setSlideShow, details }) => {
           setSlideShow(false);
         }}
         direction="right"
-        className="slider-style"
-      >
+        className="slider-style">
         <div className="slider-container">
           <div className="sliderHeader header" data-testid="flyout-title">
             {details.name}
@@ -73,8 +72,7 @@ const Flyout = ({ slideShow, setSlideShow, details }) => {
                     className="link"
                     href={details.officialSite}
                     target="_blank"
-                    rel="noreferrer"
-                  >
+                    rel="noreferrer">
                     {details.officialSite}
                   </a>
                 </dd>
@@ -84,8 +82,7 @@ const Flyout = ({ slideShow, setSlideShow, details }) => {
           <div className="sliderFooter">
             <Button
               data-testid="cancel-button"
-              onClick={() => setSlideShow(false)}
-            >
+              onClick={() => setSlideShow(false)}>
               Cancel
             </Button>
           </div>

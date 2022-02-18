@@ -3,3 +3,4 @@ export { default as Table } from './Table';
 export { default as Button } from './Button';
 export { default as Image } from './Image';
 export { default as Flyout } from './Flyout';
+export { default as Layout } from './Layout';

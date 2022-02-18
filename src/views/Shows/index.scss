@@ -1,0 +1,42 @@
+@import '../../styles/index.scss';
+
+.input-container {
+  display: flex;
+  align-items: center;
+  background-color: $color-white;
+  width: fit-content;
+  position: relative;
+
+  @media screen and (max-width: 768px) {
+    padding: $baseline-8;
+  }
+
+  svg {
+    font-size: $baseline-24;
+    margin-right: $baseline-8;
+    margin-left: $baseline-8;
+    position: absolute;
+
+    * {
+      color: $color-gray-70;
+      font-weight: 200;
+    }
+  }
+
+  .input-field {
+    width: 100%;
+    padding: $baseline-12;
+    border: 1px solid $color-gray-20;
+    border-radius: $baseline-8;
+    outline: none;
+    padding-left: $baseline-40;
+
+    &:focus {
+      border: 1px solid $color-primary-lighter;
+    }
+  }
+
+  &.fluid {
+    width: 100%;
+  }
+}
