@@ -33,18 +33,19 @@ const Rows = ({ items, handleDetails }) => {
               </Button>
             ))}
           </td>
-          <td>
-            <Button type="outline" onClick={(e) => handleClick(e, item)}>
-              View Details
-            </Button>
-          </td>
+
           <td>
             <Link
               style={{ display: 'block', margin: '1rem 0' }}
               to={`/${item.id}`}
               key={item.name}>
-              <Button type="default">Check Episodes</Button>
+              <Button type="outline">Check Episodes</Button>
             </Link>
+          </td>
+          <td>
+            <Button type="default" onClick={(e) => handleClick(e, item)}>
+              View Details
+            </Button>
           </td>
         </tr>
       ))}
