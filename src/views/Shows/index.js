@@ -1,5 +1,5 @@
 import { useEffect, useState, useCallback } from 'react';
-import toast, { Toaster } from 'react-hot-toast';
+import toast from 'react-hot-toast';
 import debounce from 'just-debounce-it';
 import { api, isTextMatch } from 'infrastructure';
 
@@ -66,19 +66,6 @@ function Shows() {
         isLoading={isLoading}
         searchResults={searchResults}
         handleChange={handleChange}
-      />
-      <Toaster
-        position="top-right"
-        toastOptions={{
-          duration: 3500,
-          style: {
-            borderRadius: '8px',
-            padding: '16px',
-            fontSize: '12px',
-            color: '#171717',
-            fontFamily: 'Be Vietnam Pro',
-          },
-        }}
       />
     </>
   );
